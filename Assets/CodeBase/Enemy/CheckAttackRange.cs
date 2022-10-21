@@ -17,14 +17,14 @@ namespace CodeBase.Enemy
       Attack.DisableAttack();
     }
 
-    private void TriggerEnter(Collider obj)
-    {
-      Attack.EnableAttack();
-    }
-
     private void TriggerExit(Collider obj)
     {
       Attack.DisableAttack();
+    }
+
+    private void TriggerEnter(Collider obj)
+    {
+      Attack.EnableAttack();
     }
   }
 }

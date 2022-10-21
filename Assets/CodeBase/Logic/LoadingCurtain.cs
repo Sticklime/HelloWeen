@@ -18,8 +18,7 @@ namespace CodeBase.Logic
       Curtain.alpha = 1;
     }
     
-    public void Hide() => 
-      StartCoroutine(DoFadeIn());
+    public void Hide() => StartCoroutine(DoFadeIn());
     
     private IEnumerator DoFadeIn()
     {

@@ -16,7 +16,7 @@ namespace CodeBase.Enemy
     public float AttackCooldown = 3.0f;
     public float Cleavage = 0.5f;
     public float EffectiveDistance = 0.5f;
-    public float Damage = 10f;
+    public float Damage = 10;
 
     private IGameFactory _factory;
     private Transform _heroTransform;
@@ -47,6 +47,7 @@ namespace CodeBase.Enemy
     {
       if (Hit(out Collider hit))
       {
+        //PhysicsDebug.DrawDebug(StartPoint(), Cleavage, 1.0f);
         hit.transform.GetComponent<IHealth>().TakeDamage(Damage);
       }
     }

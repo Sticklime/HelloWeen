@@ -9,9 +9,8 @@ namespace CodeBase.Infrastructure
     {
       var bootstrapper = FindObjectOfType<GameBootstrapper>();
       
-      if(bootstrapper != null) 
-        return;
-      
+      if(bootstrapper != null) return;
+
       Instantiate(BootstrapperPrefab);
     }
   }

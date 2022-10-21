@@ -14,9 +14,7 @@ namespace CodeBase.Infrastructure.Factory
     public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
     
     public GameObject HeroGameObject { get; set; }
-    
     public event Action HeroCreated;
-
 
     public GameFactory(IAssetProvider assets)
     {
@@ -25,13 +23,12 @@ namespace CodeBase.Infrastructure.Factory
 
     public GameObject CreateHero(GameObject at)
     {
-     HeroGameObject = InstantiateRegistered(AssetPath.HeroPath, at.transform.position);
-     HeroCreated?.Invoke();
-     return HeroGameObject;
+      HeroGameObject = InstantiateRegistered(AssetPath.HeroPath, at.transform.position);
+      HeroCreated?.Invoke();
+      return HeroGameObject;
     }
 
-
-    public GameObject CreateHud() =>
+    public GameObject CreateHud() => 
       InstantiateRegistered(AssetPath.HudPath);
 
     public void Cleanup()

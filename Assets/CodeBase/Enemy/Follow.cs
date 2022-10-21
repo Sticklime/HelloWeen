@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace CodeBase.Enemy
 {
-    public class Follow : MonoBehaviour { }
+  public abstract class Follow : MonoBehaviour
+  { }
 }

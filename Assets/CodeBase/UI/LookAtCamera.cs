@@ -1,18 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class LookAtCamera : MonoBehaviour
+namespace CodeBase.UI
 {
-    private Camera _mainCamer;
+  public class LookAtCamera : MonoBehaviour
+  {
+    private Camera _mainCamera;
 
-    private void Start() => 
-        _mainCamer = Camera.main;
+    private void Start()
+    {
+      _mainCamera = Camera.main;
+    }
 
     private void Update()
     {
-        Quaternion rotation = _mainCamer.transform.rotation;
-        transform.LookAt(transform.position + rotation * Vector3.back,rotation * Vector3.up);
+      Quaternion rotation = _mainCamera.transform.rotation;
+      transform.LookAt(transform.position + rotation * Vector3.back, rotation * Vector3.up);
     }
+  }
 }

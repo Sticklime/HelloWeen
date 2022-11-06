@@ -1,8 +1,8 @@
 ﻿using CodeBase.Data;
 using CodeBase.Infrastructure;
-using CodeBase.Infrastructure.Services;
-using CodeBase.Infrastructure.Services.PersistentProgress;
+using CodeBase.Services;
 using CodeBase.Services.Input;
+using CodeBase.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

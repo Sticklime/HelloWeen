@@ -27,7 +27,8 @@ namespace CodeBase.UI
 
     private void OnDestroy()
     {
-      _health.HealthChanged -= UpdateHpBar;
+      if (_health != null)
+        _health.HealthChanged -= UpdateHpBar;
     }
 
     private void UpdateHpBar()

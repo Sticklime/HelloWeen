@@ -41,14 +41,17 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\CodeBase\Infrastructure\Services\SaveLoad\SaveLoadService.cs" />
+     <Compile Include="Assets\CodeBase\Services\SaveLoad\SaveLoadService.cs" />
      <Compile Include="Assets\CodeBase\Services\Input\MobileInputService.cs" />
+     <Compile Include="Assets\CodeBase\Services\StaticData\IStaticDataService.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\Factory\GameFactory.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\AssetManagement\AssetProvider.cs" />
      <Compile Include="Assets\CodeBase\Logic\IHealth.cs" />
-     <Compile Include="Assets\CodeBase\Infrastructure\Services\SaveLoad\ISaveLoadService.cs" />
+     <Compile Include="Assets\CodeBase\Services\SaveLoad\ISaveLoadService.cs" />
+     <Compile Include="Assets\CodeBase\Logic\EnemySpawner.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\Game.cs" />
-     <Compile Include="Assets\CodeBase\Infrastructure\Services\PersistentProgress\IPersistentProgressService.cs" />
+     <Compile Include="Assets\CodeBase\Services\PersistentProgress\IPersistentProgressService.cs" />
+     <Compile Include="Assets\CodeBase\Enemy\LootPiece.cs" />
      <Compile Include="Assets\CodeBase\Data\PlayerProgress.cs" />
      <Compile Include="Assets\CodeBase\Enemy\Follow.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\States\GameLoopState.cs" />
@@ -58,57 +61,68 @@
      <Compile Include="Assets\CodeBase\Enemy\PhysicsDebug.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\AssetManagement\AssetPath.cs" />
      <Compile Include="Assets\CodeBase\Hero\HeroAnimator.cs" />
+     <Compile Include="Assets\CodeBase\Services\Randomizer\IRandomService.cs" />
      <Compile Include="Assets\CodeBase\Data\Stats.cs" />
      <Compile Include="Assets\CodeBase\Enemy\CheckAttackRange.cs" />
      <Compile Include="Assets\CodeBase\Hero\HeroDeath.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\States\GameStateMachine.cs" />
-     <Compile Include="Assets\CodeBase\Infrastructure\Services\IService.cs" />
+     <Compile Include="Assets\CodeBase\Services\Randomizer\RandomService.cs" />
+     <Compile Include="Assets\CodeBase\Services\IService.cs" />
+     <Compile Include="Assets\CodeBase\Data\LootPieceData.cs" />
      <Compile Include="Assets\CodeBase\Data\WorldData.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\States\LoadLevelState.cs" />
      <Compile Include="Assets\CodeBase\Data\PositionOnLevel.cs" />
      <Compile Include="Assets\CodeBase\Data\DataExtensions.cs" />
+     <Compile Include="Assets\CodeBase\Data\LootPieceDataDictionary.cs" />
      <Compile Include="Assets\CodeBase\Logic\LoadingCurtain.cs" />
      <Compile Include="Assets\CodeBase\Enemy\RotateToHero.cs" />
      <Compile Include="Assets\CodeBase\Services\Input\InputService.cs" />
      <Compile Include="Assets\CodeBase\Logic\AnimatorStateReporter.cs" />
-     <Compile Include="Assets\CodeBase\Infrastructure\Services\AllServices.cs" />
+     <Compile Include="Assets\CodeBase\Services\AllServices.cs" />
+     <Compile Include="Assets\CodeBase\Data\Loot.cs" />
+     <Compile Include="Assets\CodeBase\Data\KillData.cs" />
+     <Compile Include="Assets\CodeBase\UI\LootCounter.cs" />
      <Compile Include="Assets\CodeBase\Enemy\EnemyAnimator.cs" />
+     <Compile Include="Assets\CodeBase\Data\DictionaryData_Base.cs" />
      <Compile Include="Assets\CodeBase\Services\Input\StandaloneInputService.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\Factory\IGameFactory.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\States\IState.cs" />
+     <Compile Include="Assets\CodeBase\StaticData\MonsterStaticData.cs" />
      <Compile Include="Assets\CodeBase\Enemy\AgentMoveToPlayer.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\SceneLoader.cs" />
      <Compile Include="Assets\CodeBase\Logic\IAnimationStateReader.cs" />
      <Compile Include="Assets\CodeBase\Services\Input\IInputService.cs" />
      <Compile Include="Assets\SceneAssets\Fx\Beams\RandomizeLightStreak.cs" />
      <Compile Include="Assets\CodeBase\Enemy\EnemyDeath.cs" />
-     <Compile Include="Assets\CodeBase\Infrastructure\Services\PersistentProgress\ISavedProgressReader.cs" />
+     <Compile Include="Assets\CodeBase\StaticData\MonsterTypeId.cs" />
+     <Compile Include="Assets\CodeBase\Services\StaticData\StaticDataService.cs" />
+     <Compile Include="Assets\CodeBase\Services\PersistentProgress\ISavedProgressReader.cs" />
      <Compile Include="Assets\CodeBase\Enemy\AnimateAlongAgent.cs" />
+     <Compile Include="Assets\CodeBase\Enemy\LootSpawner.cs" />
      <Compile Include="Assets\CodeBase\Enemy\Attack.cs" />
      <Compile Include="Assets\CodeBase\Logic\SaveTrigger.cs" />
      <Compile Include="Assets\CodeBase\Logic\AnimatorState.cs" />
      <Compile Include="Assets\CodeBase\CameraLogic\CameraFollow.cs" />
      <Compile Include="Assets\CodeBase\Hero\HeroHealth.cs" />
+     <Compile Include="Assets\CodeBase\Logic\UniqueId.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\AssetManagement\IAssetProvider.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\GameBootstrapper.cs" />
      <Compile Include="Assets\CodeBase\UI\LookAtCamera.cs" />
      <Compile Include="Assets\CodeBase\UI\ActorUI.cs" />
-     <Compile Include="Assets\CodeBase\Infrastructure\Services\PersistentProgress\PersistentProgressService.cs" />
+     <Compile Include="Assets\CodeBase\Services\PersistentProgress\PersistentProgressService.cs" />
      <Compile Include="Assets\CodeBase\Data\State.cs" />
      <Compile Include="Assets\CodeBase\UI\HpBar.cs" />
      <Compile Include="Assets\CodeBase\Constants.cs" />
      <Compile Include="Assets\CodeBase\Hero\HeroAttack.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\GameRunner.cs" />
-     <Compile Include="Assets\CodeBase\Infrastructure\Services\PersistentProgress\ISavedProgress.cs" />
+     <Compile Include="Assets\CodeBase\Services\PersistentProgress\ISavedProgress.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\ICoroutineRunner.cs" />
      <Compile Include="Assets\CodeBase\Hero\HeroMove.cs" />
+     <Compile Include="Assets\CodeBase\Enemy\EndlessRotation.cs" />
      <Compile Include="Assets\CodeBase\Infrastructure\States\BootstrapState.cs" />
+     <Compile Include="Assets\CodeBase\Data\LootData.cs" />
      <Compile Include="Assets\CodeBase\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\CodeBase\Data\Vector3Data.cs" />
-     <Compile Include="Assets\CodeBase\StaticData\MonstorTypeID.cs" />
-     <Compile Include="Assets\CodeBase\Logic\EnemySpawner.cs" />
-     <Compile Include="Assets\CodeBase\Logic\UniqueId.cs" />
-     <Compile Include="Assets\CodeBase\Data\KillData.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
@@ -376,6 +390,12 @@
      </Reference>
      <Reference Include="Newtonsoft.Json">
      <HintPath>C:\Users\koldu\TestGame\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Android.Types">
+     <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Android.Gradle">
+     <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
